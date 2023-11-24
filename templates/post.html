@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block main %}
+    <form action="/post" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="location" name="location" placeholder="Location" type="text">
+        </div>
+        <select class="form-select" aria-label="Default select example" name="level" style="width: 10%;margin-left:auto;margin-right:auto;">
+            <option selected>Level</option>
+            {% for level in levels %}
+                <option value="{{ level }}">{{ level }}</option>
+            {% endfor %}
+        </select><br>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="subject" name="subject" placeholder="Subject tutee requires help in" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="day" name="day" placeholder="Day of the week tutee is available" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="time" name="time" placeholder="Timing tutee is available" type="text">
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="month" name="month" placeholder="Minimum months of commitment" type="text">
+        <p class="text-danger">{{ message }}</p>
+        <p class="text-success">{{ success }}</p>
+        <button class="btn btn-primary" type="submit">Post Opening</button>
+    </form>
+
+{% endblock %}

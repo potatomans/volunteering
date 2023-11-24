@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="row row-cols-1 row-cols-md-3 g-3">
+        {% for row in data %}
+            <div class="col">
+                <div class="card" style="card-border-color: blue;">
+                    <div class="card-body">
+                    <h5 class="card-title">{{ row.location }}</h5>
+                    <p class="card-text">Posted by: {{ row.username }}</p>
+                    <p class="card-text">Subject: {{ row.subject }}</p>
+                    <p class="card-text">Preferred timings: {{ row.day }} {{ row.time }}</p>
+                    <p class="card-text">Minimum commitment: {{ row.month }} months</p>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width:30%;margin-left:auto;margin-right:auto;">
+                    Register
+                </button><br>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                By registering, you agree to our Terms and Conditions as spelled out on our website.
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                <form action="/join" method="post">
+                                    <input name="id" type="hidden" value="{{ row.id }}">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

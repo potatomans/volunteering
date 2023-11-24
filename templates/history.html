@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Post
+{% endblock %}
+
+{% block main %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Registered</th>
+        <th scope="col">Level</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Location</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+            <tr>
+                <th scope="row">{{ row.timing }}</th>
+                <td>{{ row.level }}</td>
+                <td>{{ row.subject }}</td>
+                <td>{{ row.location }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+
+{% endblock %}
